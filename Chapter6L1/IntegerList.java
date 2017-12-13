@@ -65,14 +65,29 @@ public class IntegerList{
             {
                 //find smallest element in list starting at location i
                 //swap list[i] with smallest element
-                if(list[i + 1] < minIndex){
+                for(int j = i; j < list.length - 1; j++){
+                    if(list[i + 1] < minIndex){
                     minIndex = list[i + 1];
                 }
                 sorted[0] = minIndex;
                 sorted[i] = minIndex;
             }
+        }
             for (int i=0; i < sorted.length; i++){
             System.out.println(i + ":\t" + sorted[i]);
+        }
+    }
+    public void replaceFirst(int oldVal, int newVal){
+        int loc = search(oldVal);
+        if(loc != -1){
+            list[loc] = newVal;
+        }
+     }
+    public void replaceAll(int oldVal, int newVal){
+        int loc = search(oldVal);
+        while(loc != -1){
+            replaceFirst(oldVal, newVal);
+            list[loc] = newVal;
         }
     }
 }
